@@ -42,6 +42,7 @@ app.put('/image', (req, res) => {
 	image.handleImage(req, res, db);
 });
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`app is running on port ${process.env.PORT}`);
 });
