@@ -16,6 +16,7 @@ const db = knex({
 		ssl: true,
 	},
 });
+console.log(process.env.DATABASE_URL);
 
 const app = express();
 
@@ -39,9 +40,7 @@ app.get('/profile/:id', (req, res) => {
 app.put('/image', (req, res) => {
 	image.handleImage(req, res, db);
 });
-app.set('port', process.env.PORT || 3000);
 
-// Start node server
-app.listen(app.get('port'), function () {
-	console.log('Node server is running on port ' + app.get('port'));
+app.listen(process.env.PORT || 3000, () => {
+	console.log(`app is running on port ${process.env.PORT}`);
 });
